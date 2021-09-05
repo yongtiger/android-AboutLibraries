@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion setup.compileSdk
+    buildToolsVersion setup.buildTools
+
+    defaultConfig {
+        applicationId "com.mikepenz.aboutlibraries.sample"
+
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+        versionCode release.versionCode
+        versionName release.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        ///[FIX#Jitpack#需要Java 11]在项目根目录添加文件jitpack.yml（jdk: - openjdk11）
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation project(':library')
+
+    implementation "com.google.android.material:material:1.4.0"
+    implementation "androidx.appcompat:appcompat:1.3.1"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    // used to base on some backwards compatible themes
+    // contains util classes to support various android versions, and clean up code
+    // comes with the awesome "Holder"-Pattern
+    // https://github.com/mikepenz/Materialize
+    implementation 'com.mikepenz:materialize:1.2.1'
+
+    //used to generate the drawer on the left
+    //https://github.com/mikepenz/MaterialDrawer
+    implementation 'com.mikepenz:materialdrawer:6.1.2'
+
+    //used to provide different itemAnimators for the RecyclerView
+    //https://github.com/mikepenz/ItemAnimators
+    implementation 'com.mikepenz:itemanimators:1.1.0'
+
+    // used to provide out of the box icon font support. simplifies development,
+    // and provides scalable icons. the core is very very light
+    // https://github.com/mikepenz/Android-Iconics
+    implementation 'com.mikepenz:iconics-core:3.2.0'
+
+    //used to display the icons in the drawer
+    //https://github.com/mikepenz/Android-Iconics
+    implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.3@aar'
+
+}
+
+//configurations.all {
+//    resolutionStrategy.force "com.mikepenz:fastadapter:3.3.1"
+//    resolutionStrategy.force "com.mikepenz:iconics-core:3.2.0"
+//    resolutionStrategy.force "com.android.support:support-v4:${versions.androidX}"
+//    resolutionStrategy.force "com.android.support:appcompat-v7:${versions.androidX}"
+//    resolutionStrategy.force "com.android.support:cardview-v7:${versions.androidX}"
+//    resolutionStrategy.force "com.android.support:recyclerview-v7:${versions.androidX}"
+//    resolutionStrategy.force "com.android.support:design:${versions.androidX}"
+//    resolutionStrategy.force "com.android.support:support-annotations:${versions.androidX}"
+//}
