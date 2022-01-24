@@ -12,7 +12,8 @@
         <activity
             android:name="com.mikepenz.aboutlibraries.sample.FragmentActivity"
             android:label="@string/app_name"
-            android:theme="@style/AboutLibrariesSampleTheme">
+            android:theme="@style/AboutLibrariesSampleTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
